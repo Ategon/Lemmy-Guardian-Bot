@@ -18,6 +18,14 @@ whitelistCommentReply: "This comment has been removed as it contains a link that
 # If a community has a blacklist posts that contain links to blacklisted domains will be removed
 # If a community has both a whitelist and a blacklist only posts that contain links to whitelisted domains that are not blacklisted will be allowed
 # If a community has neither a whitelist or a blacklist but is added to this list, no links will be allowed
+# Example:
+# instances:
+#   programming.dev:
+#     programming:
+#       blacklist:
+#         - "google.com"
+#         - "youtube.com"
+
 
 instances:
   programming.dev:

@@ -146,6 +146,7 @@ function checkValid(text, whitelist, blacklist) {
     const matches = text.match(regex);
 
     if (!matches) return true;
+    if (!whitelist && !blacklist) return false; // No whitelist or blacklist but community added means no URLs allowed
     if (whitelist && whitelist.length === 0 && blacklist && blacklist.length === 0) return false; // Empty whitelist and blacklist means no URLs allowed
 
     if (blacklist) {
