@@ -60,10 +60,10 @@ for (const [instance, instanceValue] of Object.entries(instances)) {
 // Main Bot Code
 const bot = new LemmyBot.LemmyBot({
     markAsBot: markAsBot,
-    instance: process.env.INSTANCE,
+    instance: process.env.LEMMY_INSTANCE,
     credentials: {
-        username: process.env.USERNAME,
-        password: process.env.PASSWORD,
+        username: process.env.LEMMY_USERNAME,
+        password: process.env.LEMMY_PASSWORD,
     },
     dbFile: 'db.sqlite3',
     federation: {
@@ -88,7 +88,7 @@ const bot = new LemmyBot.LemmyBot({
 
                 if (communityInfo) {
                     if (!checkValid(post.name, communityInfo.whitelist, communityInfo.blacklist)) {
-                        if (!isCommunityMod({ community_id: community.id, user_id: getUserId(process.env.USERNAME) })) {
+                        if (!isCommunityMod({ community_id: community.id, user_id: getUserId(process.env.LEMMY_USERNAME) })) {
                             console.log(`Attempted to remove a post from ${community.name}@${instanceName} but the bot is not a mod.`);
                             return;
                         }
@@ -97,7 +97,7 @@ const bot = new LemmyBot.LemmyBot({
                         removePost({ post_id: post.id, reason: 'Title contains URL not allowed by the community' });
                     }
                     else if (post.body && !checkValid(post.body, communityInfo.whitelist, communityInfo.blacklist)) {
-                        if (!isCommunityMod({ community_id: community.id, user_id: getUserId(process.env.USERNAME) })) {
+                        if (!isCommunityMod({ community_id: community.id, user_id: getUserId(process.env.LEMMY_USERNAME) })) {
                             console.log(`Attempted to remove a post from ${community.name}@${instanceName} but the bot is not a mod.`);
                             return;
                         }
@@ -125,7 +125,7 @@ const bot = new LemmyBot.LemmyBot({
 
                 if (communityInfo) {
                     if (!checkValid(comment.content, communityInfo.whitelist, communityInfo.blacklist)) {
-                        if (!isCommunityMod({ community_id: community.id, user_id: getUserId(process.env.USERNAME) })) {
+                        if (!isCommunityMod({ community_id: community.id, user_id: getUserId(process.env.LEMMY_USERNAME) })) {
                             console.log(`Attempted to remove a comment from ${community.name} but the bot is not a mod.`);
                             return;
                         }
