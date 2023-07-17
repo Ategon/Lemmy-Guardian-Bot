@@ -1,6 +1,8 @@
 # Guardian Bot
 A lemmy bot that deletes posts and comments that contain blacklisted links
 
+This bot requires mod permissions in any community you want to use it in
+
 ## Notes
 - If running on windows the environment variables may act up. You can insert them manually into the bot by replacing the things like process.env.USERNAME and the other things starting with process.env with the value for username in .env or their other respective value
 
