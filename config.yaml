@@ -1,0 +1,63 @@
+---
+# Whether to give the bot a bot tag (true) or not (false). Recommended to mark it but the option is here if you already 
+# marked it manually and it starts throwing user_already_exists errors
+markAsBot: true
+
+# If the community has a blacklist the bot will respond with the blacklist message on appropriate messages
+# Else if it has a whitelist it will reply with the whitelist message on appropriate messages
+# Else if it has both it will reply with the whitelist message
+
+# Post replies will be dmed while comment replies will be replies to the comment
+blacklistPostReply: "Your recent post in ${COMMUNITY} has been removed as it contains a link to a blacklisted domain."
+blacklistCommentReply: "This comment has been removed as it contains a link to a blacklisted domain."
+whitelistPostReply: "Your recent post in ${COMMUNITY} has been removed as it contains a link that is not whitelisted."
+whitelistCommentReply: "This comment has been removed as it contains a link that is not whitelisted."
+
+
+# If a community has a whitelist only posts that contain links to whitelisted domains will be allowed
+# If a community has a blacklist posts that contain links to blacklisted domains will be removed
+# If a community has both a whitelist and a blacklist only posts that contain links to whitelisted domains that are not blacklisted will be allowed
+# If a community has neither a whitelist or a blacklist but is added to this list, no links will be allowed
+
+instances:
+  programming.dev:
+    programming:
+      templates:
+        - "generalRemoval"
+    godot:
+      templates:
+        - "generalRemoval"
+    unreal_engine:
+      templates:
+        - "generalRemoval"
+    unity:
+      templates:
+        - "generalRemoval"
+    rust:
+      templates:
+        - "generalRemoval"
+    gamedev:
+      templates:
+        - "generalRemoval"
+    programmer_humor:
+      templates:
+        - "generalRemoval"
+    books:
+      templates:
+        - "instanceWhitelist"
+
+# Templates are used to share link blacklists and whitelists between communities
+templates:
+  generalRemoval:
+    blacklist:
+      - "domesticatedbrain.com" # AI generated articles that were being spammed
+  instanceWhitelist:
+    whitelist:
+      - "programming.dev"
+      - "lemmy.ml"
+      - "lemmy.world"
+      - "beehaw.org"
+      - "lemm.ee"
+      - "sh.itjust.works"
+      - "discuss.tchncs.de"
+      - "sopuli.xyz"
